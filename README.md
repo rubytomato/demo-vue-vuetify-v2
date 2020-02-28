@@ -1,5 +1,11 @@
 # demo-vue-vuetify-v2
 
+Vuetify.js Component Demonstration.
+
+**GitHub Pages**
+
+https://rubytomato.github.io/demo-vue-vuetify-v2/
+
 ## Project setup
 
 ```
@@ -48,13 +54,11 @@ $ npm install eslint-plugin-vuetify -D
 ```js
 // .eslintrc.js
 module.exports = {
-  plugins: [
-    'vuetify'
-  ],
+  plugins: ["vuetify"],
   rules: {
-    'vuetify/no-deprecated-classes': 'error'
+    "vuetify/no-deprecated-classes": "error"
   }
-}
+};
 ```
 
 ### Install Material Design Icons
