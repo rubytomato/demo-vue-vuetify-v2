@@ -1,7 +1,10 @@
 {
   "name": "demo-vue-vuetify-v2",
+  "description": "Vutify.js Component demonstration",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
+  "homepage": "https://rubytomato.github.io/demo-vue-vuetify-v2/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
