@@ -462,13 +462,7 @@
         <v-subheader>Events</v-subheader>
         <v-container>
           <v-row>
-            <v-dialog
-              :value="event"
-              @input="event = $event"
-              @click:outside="outside"
-              @keydown="keydown"
-              max-width="500"
-            >
+            <v-dialog :value="event" @input="event = $event" max-width="500">
               <template v-slot:activator="{ on }">
                 <v-btn v-on="on">Open Dialog(13) [{{ event }}]</v-btn>
               </template>
@@ -570,17 +564,6 @@ export default {
       el.select()
       document.execCommand('copy')
       document.body.removeChild(el)
-    },
-    keydown(e) {
-      // KeyboardEvent
-      console.log('keydown:', e)
-    },
-    outside(e) {
-      // MouseEvent
-      console.log('outside:', e)
-    },
-    input(v) {
-      console.log('input:', v)
     }
   }
 }

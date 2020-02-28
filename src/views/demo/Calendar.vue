@@ -183,14 +183,11 @@ export default {
       })
     }
   },
-  created() {},
   mounted() {
     this.$refs.calendar.checkChange()
-    console.log('mounted type:', this.type)
   },
   methods: {
     viewDay({ date }) {
-      console.log('viewDay:', date)
       this.focus = date
       this.type = 'day'
     },
@@ -199,7 +196,6 @@ export default {
     },
     setToday() {
       this.now = dateFormat.format(new Date(), 'yyyy-MM-dd hh:mm:ss')
-      console.log('setToday:', this.now)
       this.focus = this.now
     },
     prev() {
@@ -211,7 +207,6 @@ export default {
     showEvent({ nativeEvent, event }) {
       const open = () => {
         this.selectedEvent = event
-        console.log('selected Event:', this.selectedEvent)
         this.selectedElement = nativeEvent.target
         setTimeout(() => (this.selectedOpen = true), 10)
       }
@@ -225,15 +220,7 @@ export default {
 
       nativeEvent.stopPropagation()
     },
-    // 日表示のフォーマッター
-    dayFormatter(event, timedEvent) {
-      console.log('event:', event, 'timedEvent', timedEvent)
-      return 'xx'
-    },
     eventNameFormatter(event, timedEvnet) {
-      // event
-      // eslint-disable-next-line no-console
-      console.log('event:', event, 'timedEvent', timedEvnet)
       // event.input.{eventオブジェクト}
       if (timedEvnet) {
         return event.input.name + ' ' + '<b>' + event.input.details + '</b>'
@@ -244,7 +231,6 @@ export default {
       return event.start.time + ' ' + event.input.name
     },
     updateRange({ start, end }) {
-      console.log('updateRange start:', start, 'end:', end)
       this.start = start
       this.end = end
       this.events = [
@@ -275,10 +261,8 @@ export default {
   },
   watch: {
     type: function(val) {
-      console.log('val:' + val)
       if (val === 'day') {
         this.container = document.getElementsByClassName('v-calendar-daily__day-container')
-        console.log('container:', this.container)
       }
     }
   }

@@ -503,7 +503,7 @@
       </v-col>
       <v-col cols="12" class="my-2 grey lighten-4">
         <v-subheader>image</v-subheader>
-        <v-card :img="require('@/assets/sea.png')" height="369" width="656" @click="imageClick">
+        <v-card :img="require('@/assets/sea.png')" height="369" width="656">
           <v-card-title class="headline white--text">title</v-card-title>
           <v-card-subtitle class="white--text">card subtitle</v-card-subtitle>
           <v-card-text class="white--text">
@@ -541,7 +541,7 @@
         <v-subheader>Events</v-subheader>
         <v-container fluid>
           <v-row justify="start">
-            <v-card @click="imageClick" width="600">
+            <v-card width="600">
               <v-card-title>click event</v-card-title>
               <v-card-subtitle>card subtitle</v-card-subtitle>
               <v-card-text>
@@ -592,9 +592,6 @@ export default {
         this.loading2 = false
         this.loadLabel2 = 'Load'
       }, 5000)
-    },
-    imageClick(e) {
-      console.log('image click', e)
     }
   }
 }

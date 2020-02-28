@@ -420,7 +420,7 @@
         <v-container>
           <v-row justify="start">
             <v-col cols="12" md="6">
-              <v-alert ref="alert1" outlined transition="fade-transition" @input="inputEvent">
+              <v-alert ref="alert1" outlined transition="fade-transition">
                 <template v-slot:prepend>
                   <v-icon size="32" color="green" left>mdi-arrow-left-bold</v-icon>
                 </template>
@@ -478,11 +478,7 @@ export default {
   },
   methods: {
     toggle() {
-      console.log('toggle')
       this.$refs.alert1.toggle()
-    },
-    inputEvent(val) {
-      console.log('input', val)
     }
   }
 }

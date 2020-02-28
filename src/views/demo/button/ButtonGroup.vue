@@ -523,7 +523,7 @@
             </v-col>
             <v-col cols="12" md="4">
               <v-subheader>max =2 / multiple : {{ bgm2 }}</v-subheader>
-              <v-btn-toggle :max="2" multiple v-model="bgm2" color="light-blue" @change="change">
+              <v-btn-toggle :max="2" multiple v-model="bgm2" color="light-blue">
                 <v-btn icon value="A">
                   <v-icon class="cyan--text">mdi-alpha-a-box-outline</v-icon>
                 </v-btn>
@@ -562,12 +562,6 @@ export default {
       bg5: '',
       bgm1: ['B'],
       bgm2: []
-    }
-  },
-  methods: {
-    change(val) {
-      console.log('change:', val)
-      console.log(val.length)
     }
   }
 }

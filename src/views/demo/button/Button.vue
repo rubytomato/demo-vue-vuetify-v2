@@ -365,9 +365,6 @@ export default Vue.extend({
     loader(p) {
       this[p] = true
       setTimeout(() => (this[p] = false), 5000)
-    },
-    click(e) {
-      console.log('click:', e)
     }
   }
 })

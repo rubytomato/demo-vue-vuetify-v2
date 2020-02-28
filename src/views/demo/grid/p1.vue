@@ -96,9 +96,6 @@ export default {
       dense: false,
       gutters: false
     }
-  },
-  mounted() {
-    console.log(this.$vuetify)
   }
 }
 </script>

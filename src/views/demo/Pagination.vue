@@ -238,18 +238,6 @@ export default {
       p29: 1,
       p30: 1
     }
-  },
-  methods: {
-    selected(num) {
-      console.log('input:', num)
-      console.log('value:', this.$refs.page.$props.value)
-    },
-    next() {
-      console.log('next:', this.p19)
-    },
-    previous() {
-      console.log('previous:', this.p19)
-    }
   }
 }
 </script>
