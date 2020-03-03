@@ -1,6 +1,6 @@
 <!--
-  -- 実装例：ポイントを指定する例
-  -->
+  -- 実装例：v-colのorder
+-->
 <template>
   <v-container>
     <!-- justify 横方向 -->
@@ -25,45 +25,29 @@
       class="grey lighten-3"
       style="height: 600px;"
     >
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #FFCDD2">
-        column 1
+      <v-col cols="3" order="1" :align-self="alignSelf" style="background-color: #FFCDD2">
+        <v-sheet color="red" tile class="pa-2">column 1</v-sheet>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #F8BBD0">
-        column 2
+      <v-col cols="3" order="2" style="background-color: #F8BBD0">
+        <v-sheet color="pink" tile class="pa-2">column 2</v-sheet>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #E1BEE7">
-        column 3
+      <v-col cols="3" order="3" :align-self="alignSelf" style="background-color: #E1BEE7">
+        <v-sheet color="purple" tile class="pa-2">column 3</v-sheet>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #D1C4E9">
-        column 4
+      <v-col cols="3" order="4" style="background-color: #D1C4E9">
+        <v-sheet color="deep-purple" tile class="pa-2">column 4</v-sheet>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #C5CAE9">
-        column 5
+      <v-col cols="3" order="5" :align-self="alignSelf" style="background-color: #C5CAE9">
+        <v-sheet color="indigo" tile class="pa-2">column 5</v-sheet>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #BBDEFB">
-        column 6
+      <v-col cols="3" order="6" style="background-color: #BBDEFB">
+        <v-sheet color="blue" tile class="pa-2">column 6</v-sheet>
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #B3E5FC">
-        column 7
+      <v-col cols="3" order="7" :align-self="alignSelf" style="background-color: #B3E5FC">
+        <v-sheet color="light-blue" tile class="pa-2">column 7</v-sheet>
       </v-col>
-    </v-row>
-    <v-row
-      :dense="dense"
-      :no-gutters="gutters"
-      :align="align"
-      :justify="justify"
-      :align-content="alignContent"
-      class="grey lighten-3 mt-5"
-      style="height: 200px;"
-    >
-      <v-col cols="3" style="background-color: #FFCDD2">
-        column 1
-      </v-col>
-      <v-col cols="auto" style="background-color: #F8BBD0">
-        column 2 column 2 column 2 column 2
-      </v-col>
-      <v-col cols="3" style="background-color: #E1BEE7">
-        column 3
+      <v-col cols="3" order="8" style="background-color: #B2EBF2">
+        <v-sheet color="cyan" tile class="pa-2">column 8</v-sheet>
       </v-col>
     </v-row>
 
@@ -95,6 +79,7 @@
         <v-select v-model="align" :items="alignValues" label="align" return-object />
         <v-select v-model="justify" :items="justifyValues" label="justify" return-object />
         <v-select v-model="alignContent" :items="alignContentValues" label="align-content" return-object />
+        <v-select v-model="alignSelf" :items="alignSelfValues" label="align-self" return-object />
       </v-sheet>
     </v-row>
   </v-container>
@@ -102,7 +87,7 @@
 
 <script>
 export default {
-  name: 'GridP1',
+  name: 'GridP5',
   data() {
     return {
       dense: false,
@@ -110,9 +95,11 @@ export default {
       align: undefined,
       justify: undefined,
       alignContent: undefined,
+      alignSelf: undefined,
       alignValues: [undefined, 'start', 'end', 'center', 'baseline', 'stretch'],
       justifyValues: [undefined, 'start', 'end', 'center', 'space-between', 'space-around'],
-      alignContentValues: [undefined, 'start', 'end', 'center', 'space-between', 'space-around', 'stretch']
+      alignContentValues: [undefined, 'start', 'end', 'center', 'space-between', 'space-around', 'stretch'],
+      alignSelfValues: [undefined, 'auto', 'start', 'end', 'center', 'baseline', 'stretch']
     }
   }
 }

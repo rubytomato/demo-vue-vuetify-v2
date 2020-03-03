@@ -66,6 +66,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "Dialog" */ '../views/demo/Dialog.vue')
   },
   {
+    path: '/footer',
+    name: 'Footer',
+    component: () => import(/* webpackChunkName: "Footer" */ '../views/demo/Footer.vue')
+  },
+  {
+    path: '/grid',
+    name: 'Grid',
+    component: () => import(/* webpackChunkName: "Grid" */ '../views/demo/grid/grid.vue')
+  },
+  {
     path: '/grid/p1',
     name: 'GridP1',
     component: () => import(/* webpackChunkName: "GridP1" */ '../views/demo/grid/p1.vue')
@@ -89,6 +99,21 @@ const routes = [
     path: '/grid/p5',
     name: 'GridP5',
     component: () => import(/* webpackChunkName: "GridP5" */ '../views/demo/grid/p5.vue')
+  },
+  {
+    path: '/grid/p6',
+    name: 'GridP6',
+    component: () => import(/* webpackChunkName: "GridP6" */ '../views/demo/grid/p6.vue')
+  },
+  {
+    path: '/grid/p7',
+    name: 'GridP7',
+    component: () => import(/* webpackChunkName: "GridP7" */ '../views/demo/grid/p7.vue')
+  },
+  {
+    path: '/grid/p9',
+    name: 'GridP9',
+    component: () => import(/* webpackChunkName: "GridP9" */ '../views/demo/grid/p9.vue')
   },
   {
     path: '/icon',

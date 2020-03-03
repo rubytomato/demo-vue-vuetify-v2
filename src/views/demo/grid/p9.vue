@@ -1,6 +1,3 @@
-<!--
-  -- 実装例：ポイントを指定する例
-  -->
 <template>
   <v-container>
     <!-- justify 横方向 -->
@@ -23,28 +20,43 @@
       :justify="justify"
       :align-content="alignContent"
       class="grey lighten-3"
-      style="height: 600px;"
+      style="height: 150px;"
     >
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #FFCDD2">
-        column 1
+      <v-col style="background-color: #FFCDD2">
+        1
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #F8BBD0">
-        column 2
+      <v-col style="background-color: #F8BBD0">
+        2
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #E1BEE7">
-        column 3
+      <v-col style="background-color: #E1BEE7">
+        3
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #D1C4E9">
-        column 4
+      <v-col style="background-color: #D1C4E9">
+        4
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #C5CAE9">
-        column 5
+      <v-col style="background-color: #C5CAE9">
+        5
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #BBDEFB">
-        column 6
+      <v-col style="background-color: #BBDEFB">
+        6
       </v-col>
-      <v-col cols="12" sm="8" md="6" lg="4" xl="3" style="background-color: #B3E5FC">
-        column 7
+      <v-col style="background-color: #B3E5FC">
+        7
+      </v-col>
+      <v-col style="background-color: #B2EBF2">
+        8
+      </v-col>
+      <v-col style="background-color: #B2DFDB">
+        9
+      </v-col>
+      <v-col style="background-color: #C8E6C9">
+        10
+      </v-col>
+      <v-col style="background-color: #DCEDC8">
+        11
+      </v-col>
+      <v-col style="background-color: #F0F4C3">
+        12
       </v-col>
     </v-row>
     <v-row
@@ -53,21 +65,55 @@
       :align="align"
       :justify="justify"
       :align-content="alignContent"
-      class="grey lighten-3 mt-5"
-      style="height: 200px;"
+      class="grey lighten-3"
+      style="height: 150px;"
     >
-      <v-col cols="3" style="background-color: #FFCDD2">
-        column 1
+      <v-col style="background-color: #FFF9C4">
+        13
       </v-col>
-      <v-col cols="auto" style="background-color: #F8BBD0">
-        column 2 column 2 column 2 column 2
+      <v-col style="background-color: #FFECB3">
+        14
       </v-col>
-      <v-col cols="3" style="background-color: #E1BEE7">
-        column 3
+      <v-col style="background-color: #FFE0B2">
+        15
+      </v-col>
+      <v-col style="background-color: #FFCCBC">
+        16
+      </v-col>
+      <v-col style="background-color: #D7CCC8">
+        17
+      </v-col>
+      <v-col style="background-color: #CFD8DC">
+        18
+      </v-col>
+    </v-row>
+    <v-row
+      :dense="dense"
+      :no-gutters="gutters"
+      :align="align"
+      :justify="justify"
+      :align-content="alignContent"
+      class="grey lighten-3"
+      style="height: 150px;"
+    >
+      <v-col style="background-color: #FFCDD2">
+        19
+      </v-col>
+      <v-col style="background-color: #F8BBD0">
+        20
+      </v-col>
+      <v-col style="background-color: #E1BEE7">
+        21
+      </v-col>
+      <v-col style="background-color: #D1C4E9">
+        22
+      </v-col>
+      <v-col style="background-color: #C5CAE9">
+        23
       </v-col>
     </v-row>
 
-    <v-row style="height: 600px;" class="cyan lighten-3 mt-8">
+    <v-row class="mt-8">
       <v-sheet elevation="2" color="green lighten-4" tile class="pa-2 ma-2" max-width="500">
         <pre>
 (12) xs :         -   599px
@@ -88,6 +134,7 @@
           <li>LG : {{ $vuetify.breakpoint.lg }}</li>
           <li>XL : {{ $vuetify.breakpoint.xl }}</li>
         </ul>
+        <b-btn @click="dump">dump</b-btn>
       </v-sheet>
       <v-sheet elevation="2" color="green lighten-4" tile class="pa-2 ma-2" max-width="500">
         <v-switch v-model="dense" label="dense" />
@@ -102,7 +149,7 @@
 
 <script>
 export default {
-  name: 'GridP1',
+  name: 'GridP6',
   data() {
     return {
       dense: false,
