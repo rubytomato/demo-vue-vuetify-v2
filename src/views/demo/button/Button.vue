@@ -292,7 +292,7 @@
         <v-container>
           <v-row>
             <v-sheet color="grey" style="height: 300px; width: 600px; position: relative">
-              <v-btn absolute top left @click="click">top + left</v-btn>
+              <v-btn absolute top left>top + left</v-btn>
               <v-btn absolute top right>top + right</v-btn>
               <v-btn absolute bottom left>bottom + left</v-btn>
               <v-btn absolute bottom right>bottom + right</v-btn>

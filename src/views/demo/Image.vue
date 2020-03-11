@@ -13,6 +13,9 @@
 
 <script>
 export default {
-  name: 'Image'
+  name: 'XImage',
+  data() {
+    return {}
+  }
 }
 </script>

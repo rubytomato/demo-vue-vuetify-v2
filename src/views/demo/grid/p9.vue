@@ -134,7 +134,6 @@
           <li>LG : {{ $vuetify.breakpoint.lg }}</li>
           <li>XL : {{ $vuetify.breakpoint.xl }}</li>
         </ul>
-        <b-btn @click="dump">dump</b-btn>
       </v-sheet>
       <v-sheet elevation="2" color="green lighten-4" tile class="pa-2 ma-2" max-width="500">
         <v-switch v-model="dense" label="dense" />
@@ -149,7 +148,7 @@
 
 <script>
 export default {
-  name: 'GridP6',
+  name: 'GridP9',
   data() {
     return {
       dense: false,

@@ -87,7 +87,7 @@
 
 <script>
 export default {
-  name: 'GridP5',
+  name: 'GridP6',
   data() {
     return {
       dense: false,

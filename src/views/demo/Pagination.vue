@@ -192,8 +192,7 @@
         <v-container class="pa-0">
           <v-row>
             <v-col cols="12" md="6">
-              <v-pagination ref="page" v-model="p19" :length="20" @input="selected" @next="next" @previous="previous">
-              </v-pagination>
+              <v-pagination ref="page" v-model="p19" :length="20"> </v-pagination>
             </v-col>
           </v-row>
         </v-container>

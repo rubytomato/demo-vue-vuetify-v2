@@ -122,8 +122,8 @@ const routes = [
   },
   {
     path: '/image',
-    name: 'Image',
-    component: () => import(/* webpackChunkName: "Image" */ '../views/demo/Image.vue')
+    name: 'XImage',
+    component: () => import(/* webpackChunkName: "XImage" */ '../views/demo/Image.vue')
   },
   {
     path: '/list',

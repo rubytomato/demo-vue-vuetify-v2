@@ -5,6 +5,7 @@
     </v-content>
     <v-footer app>
       <v-btn
+        small
         outlined
         v-for="comp in components"
         :key="comp.name"
