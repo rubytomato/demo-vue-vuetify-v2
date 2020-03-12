@@ -362,7 +362,13 @@
               <!-- fade-transition -->
               <!-- slide-x-transition -->
               <!-- scroll-x-transition -->
-              <v-dialog v-model="transition" max-width="500" transition="scroll-x-transition">
+              <!-- origin (x,y)-->
+              <!-- center center 中央 -->
+              <!-- top right 右上 -->
+              <!-- bottom left 左下-->
+              <!-- center left 左 -->
+              <!-- top center 上-->
+              <v-dialog v-model="transition" max-width="500" origin="top center">
                 <template v-slot:activator="{ on }">
                   <v-btn v-on="on">transition</v-btn>
                 </template>
