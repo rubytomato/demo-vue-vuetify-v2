@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import components from '@/assets/json/components.json'
+import friends from './friends'
 
 Vue.use(Vuex)
 
@@ -12,7 +13,9 @@ const store = new Vuex.Store({
   getters: {},
   mutations: {},
   actions: {},
-  modules: {}
+  modules: {
+    friends
+  }
 })
 
 export default store
