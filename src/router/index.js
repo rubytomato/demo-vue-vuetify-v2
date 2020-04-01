@@ -111,6 +111,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "GridP7" */ '../views/demo/grid/p7.vue')
   },
   {
+    path: '/grid/p8',
+    name: 'GridP8',
+    component: () => import(/* webpackChunkName: "GridP8" */ '../views/demo/grid/p8.vue')
+  },
+  {
     path: '/grid/p9',
     name: 'GridP9',
     component: () => import(/* webpackChunkName: "GridP9" */ '../views/demo/grid/p9.vue')

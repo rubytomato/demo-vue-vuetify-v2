@@ -30,6 +30,10 @@
       </v-col>
       <v-col cols="4">実装例：v-spacer</v-col>
       <v-col cols="2">
+        <v-btn to="/grid/p8">Grid System 8</v-btn>
+      </v-col>
+      <v-col cols="4">実装例：fill-hight</v-col>
+      <v-col cols="2">
         <v-btn to="/grid/p9">Grid System 9</v-btn>
       </v-col>
       <v-col cols="4">実装例：ポイントを指定しない</v-col>
