@@ -115,6 +115,11 @@
     "active": "primary"
   },
   {
+    "name": "TextField",
+    "path": "/form/text-field",
+    "active": "primary"
+  },
+  {
     "name": "Tooltip",
     "path": "/tooltip",
     "active": "primary"

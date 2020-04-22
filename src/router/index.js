@@ -171,6 +171,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "Stepper" */ '../views/demo/Stepper.vue')
   },
   {
+    path: '/form/text-field',
+    name: 'TextField',
+    component: () => import(/* webpackChunkName: "TextField" */ '../views/demo/form/TextField.vue')
+  },
+  {
     path: '/tooltip',
     name: 'Tooltip',
     component: () => import(/* webpackChunkName: "Tooltip" */ '../views/demo/Tooltip.vue')
