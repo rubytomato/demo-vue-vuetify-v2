@@ -142,7 +142,7 @@ const routes = [
   },
   {
     path: '/list/group/:sub/:no',
-    name: 'ListGroup',
+    name: 'ListGroupSubNo',
     component: () => import(/* webpackChunkName: "ListGroupSubNo" */ '../views/demo/list/ListGroup.vue')
   },
   {
