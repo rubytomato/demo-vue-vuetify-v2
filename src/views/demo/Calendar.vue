@@ -35,6 +35,9 @@
                 <v-list-item @click="type = '4day'">
                   <v-list-item-title>4 days</v-list-item-title>
                 </v-list-item>
+                <v-list-item @click="type = 'category'">
+                  <v-list-item-title>category</v-list-item-title>
+                </v-list-item>
               </v-list>
             </v-menu>
           </v-toolbar>
@@ -46,10 +49,10 @@
             ref="calendar"
             v-model="focus"
             color="primary"
-            locale="ja-JP"
+            category-show-all
+            :categories="categories"
             :events="events"
             :event-color="getEventColor"
-            :event-name="eventNameFormatter"
             :event-margin-bottom="4"
             :now="now"
             :first-interval="16"
@@ -61,18 +64,16 @@
             @click:more="viewDay"
             @click:date="viewDay"
             @change="updateRange"
-          ></v-calendar>
+          >
+            <template v-slot:event="props">
+              <div v-html="eventName(props)" class="pl-1"></div>
+            </template>
+          </v-calendar>
           <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
             <v-card color="grey lighten-4" min-width="350px" flat>
               <v-toolbar :color="selectedEvent.color" dark>
-                <v-btn icon>
-                  <v-icon>mdi-pencil</v-icon>
-                </v-btn>
                 <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-btn icon>
-                  <v-icon>mdi-heart</v-icon>
-                </v-btn>
                 <v-btn icon>
                   <v-icon>mdi-dots-vertical</v-icon>
                 </v-btn>
@@ -81,11 +82,11 @@
                 <span v-html="selectedEvent.details"></span>
               </v-card-text>
               <v-card-text>
-                <span v-html="selectedEvent.start"></span>
+                <span v-html="selectedEvent.start"></span> - <span v-html="selectedEvent.end"></span>
               </v-card-text>
               <v-card-actions>
                 <v-btn text color="secondary" @click="selectedOpen = false">
-                  Cancel
+                  Close
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -131,7 +132,8 @@ export default {
       month: 'Month',
       week: 'Week',
       day: 'Day',
-      '4day': '4 Days'
+      '4day': '4 Days',
+      category: 'Category'
     },
     // YYYY-MM-DD形式のカレンダーの開始日（含む）。 これは、カレンダーの種類によっては無視される場合があります。
     start: null,
@@ -145,6 +147,7 @@ export default {
     events: [],
     colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
     names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
+    categories: ['John Smith', 'Tori Walker'],
     container: null
   }),
   computed: {
@@ -187,6 +190,28 @@ export default {
     this.$refs.calendar.checkChange()
   },
   methods: {
+    eventName(props) {
+      console.log(props)
+      const name = props.event.name
+      if (props.eventParsed.start.hasTime) {
+        // day
+        // 4 days
+        // week
+        // category
+        if (props.timed) {
+          const time = props.timeSummary()
+          const delimiter = props.singleline ? ', ' : '<br>'
+          console.log('timed true', time, '***')
+          return `<strong>${name}</strong>${delimiter}${time}`
+          // month
+        } else {
+          const time = props.formatTime(props.eventParsed.start, true)
+          console.log('timed false', time, '***')
+          return `<strong>${time}</strong> ${name}`
+        }
+      }
+      return `<strong>${name}</strong>`
+    },
     viewDay({ date }) {
       this.focus = date
       this.type = 'day'
@@ -205,6 +230,7 @@ export default {
       this.$refs.calendar.next()
     },
     showEvent({ nativeEvent, event }) {
+      console.log(event)
       const open = () => {
         this.selectedEvent = event
         this.selectedElement = nativeEvent.target
@@ -221,29 +247,114 @@ export default {
       nativeEvent.stopPropagation()
     },
     eventNameFormatter(event, timedEvnet) {
+      console.log(event.input)
       // event.input.{eventオブジェクト}
       if (timedEvnet) {
-        return event.input.name + ' ' + '<b>' + event.input.details + '</b>'
+        return '1.[' + event.input.name + ' ' + '<b>' + event.input.details + '</b>]'
       }
       if (event.allDay || !event.start.hasTime) {
-        return event.input.name
+        return '2.[' + event.input.name + ']'
       }
-      return event.start.time + ' ' + event.input.name
+      return '3.[' + event.start.time + ' ' + event.input.name + ']'
+    },
+    eventTimeFormatter(event) {
+      console.log('eventTimeFormatter', event)
+      return false
     },
     updateRange({ start, end }) {
       this.start = start
       this.end = end
       this.events = [
-        { name: 'Holiday', start: '2019-12-28', end: '2020-01-03', color: 'pink', details: '年末年始' },
-        { name: 'Holiday', start: '2020-01-13', end: '', color: 'pink', details: '成人の日' },
-        { name: 'PTO', start: '2020-01-14 10:00', end: '', color: 'indigo', details: 'xxxxxx' },
-        { name: 'Event', start: '2020-01-14 13:15', end: '', color: 'cyan', details: 'xxxxxx' },
-        { name: 'Party', start: '2020-01-17 19:30', end: '2020-01-17 21:00', color: 'orange', details: '新年会' },
-        { name: 'Party', start: '2020-01-18 20:15', end: '', color: 'orange', details: 'xxxxxx' },
-        { name: 'Meeting', start: '2020-01-20 15:00', end: '2020-01-20 16:00', color: 'blue', details: 'yyyyy' },
-        { name: 'Meeting', start: '2020-01-20 16:00', end: '2020-01-20 18:00', color: 'blue', details: 'yyyyy' },
-        { name: 'Meeting', start: '2020-01-20 19:15', end: '2020-01-20 20:00', color: 'blue', details: 'yyyyy' },
-        { name: 'Travel', start: '2020-01-22', end: '2020-01-26', color: 'green', details: 'zzzzz' }
+        {
+          name: 'Holiday',
+          start: '2019-12-28',
+          end: '2020-01-03',
+          color: 'pink',
+          details: '年末年始',
+          category: 'John Smith'
+        },
+        {
+          name: 'start 18:00',
+          start: '2020-08-03 18:00',
+          end: '',
+          color: 'pink',
+          details: '年末年始',
+          category: 'John Smith'
+        },
+        {
+          name: 'start 18:30 15min aaaaaaaaaa',
+          start: '2020-08-03 18:30',
+          end: '2020-08-03 18:45',
+          color: 'pink',
+          details: '年末年始',
+          category: 'John Smith'
+        },
+        {
+          name: 'start 19:00 30min bbbbbbbbbb',
+          start: '2020-08-03 19:00',
+          end: '2020-08-03 19:30',
+          color: 'pink',
+          details: 'xxxxxxxxxx xxxxxxxxxx xxxxxxxxxx',
+          category: 'John Smith'
+        },
+        {
+          name: 'start 20:00 60min cccccccccc',
+          start: '2020-08-03 20:00',
+          end: '2020-08-03 21:00',
+          color: 'pink',
+          details: '年末年始',
+          category: 'John Smith'
+        },
+        { name: 'Holiday', start: '2020-08-13', end: '', color: 'pink', details: '成人の日', category: 'John Smith' },
+        { name: 'PTO', start: '2020-08-14 10:00', end: '', color: 'indigo', details: 'xxxxxx', category: 'John Smith' },
+        { name: 'Event', start: '2020-08-14 13:15', end: '', color: 'cyan', details: 'xxxxxx', category: 'John Smith' },
+        {
+          name: 'Party',
+          start: '2020-08-17',
+          end: '2020-08-17',
+          color: 'orange',
+          details: '新年会',
+          category: 'John Smith'
+        },
+        {
+          name: 'Party',
+          start: '2020-08-18 20:15',
+          color: 'orange',
+          details: 'xxxxxx',
+          category: 'John Smith'
+        },
+        {
+          name: 'Meeting',
+          start: '2020-08-20 15:00',
+          end: '2020-08-20 16:00',
+          color: 'blue',
+          details: 'yyyyy',
+          category: 'Tori Walker'
+        },
+        {
+          name: 'Meeting',
+          start: '2020-08-20 16:00',
+          end: '2020-08-20 18:00',
+          color: 'blue',
+          details: 'yyyyy',
+          category: 'Tori Walker'
+        },
+        {
+          name: 'Meeting',
+          start: '2020-08-20 19:15',
+          end: '2020-08-20 20:00',
+          color: 'blue',
+          details: 'yyyyy',
+          category: 'Tori Walker'
+        },
+        {
+          name: 'Travel',
+          start: '2020-08-22',
+          end: '2020-08-26',
+          color: 'green',
+          details: 'zzzzz',
+          category: 'John Smith'
+        }
       ]
     },
     nth(d) {
